@@ -40,12 +40,12 @@ private:
 };
 
 // 一个具体的容器类,这里是用数组表示
-class ConcreateAggregate
+class ConcreteAggregate
 	: public Aggregate
 {
 public:
-	ConcreateAggregate(int nSize);
-	virtual ~ConcreateAggregate();
+	ConcreteAggregate(int nSize);
+	virtual ~ConcreteAggregate();
 
 	virtual Iterater* CreateIterater(Aggregate *pAggregate);
 	virtual int GetSize();
@@ -56,13 +56,13 @@ private:
 	DATA *m_pData;
 };
 
-// 访问ConcreateAggregate容器类的迭代器类
-class ConcreateIterater
+// 访问ConcreteAggregate容器类的迭代器类
+class ConcreteIterater
 	: public Iterater
 {
 public:
-	ConcreateIterater(Aggregate* pAggregate);
-	virtual ~ConcreateIterater(){}
+	ConcreteIterater(Aggregate* pAggregate);
+	virtual ~ConcreteIterater(){}
 
 	virtual void First();
 	virtual void Next();
@@ -70,7 +70,7 @@ public:
 	virtual DATA CurrentItem();
 
 private:
-	Aggregate  *m_pConcreateAggregate;
+	Aggregate  *m_pConcreteAggregate;
 	int			m_nIndex;
 };
 

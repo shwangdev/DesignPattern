@@ -10,7 +10,7 @@
 #include <iostream>
 #include "Iterator.h"
 
-ConcreateAggregate::ConcreateAggregate(int nSize)
+ConcreteAggregate::ConcreteAggregate(int nSize)
 	: m_nSize(nSize)
 	, m_pData(NULL)
 {
@@ -22,23 +22,23 @@ ConcreateAggregate::ConcreateAggregate(int nSize)
 	}
 }
 
-ConcreateAggregate::~ConcreateAggregate()
+ConcreteAggregate::~ConcreteAggregate()
 {
 	delete [] m_pData;
 	m_pData = NULL;
 }
 
-Iterater* ConcreateAggregate::CreateIterater(Aggregate *pAggregate)
+Iterater* ConcreteAggregate::CreateIterater(Aggregate *pAggregate)
 {
-	return new ConcreateIterater(this);
+	return new ConcreteIterater(this);
 }
 
-int ConcreateAggregate::GetSize()
+int ConcreteAggregate::GetSize()
 {
 	return m_nSize;
 }
 
-DATA ConcreateAggregate::GetItem(int nIndex)
+DATA ConcreteAggregate::GetItem(int nIndex)
 {
 	if (nIndex < m_nSize)
 	{
@@ -50,34 +50,34 @@ DATA ConcreateAggregate::GetItem(int nIndex)
 	}
 }
 
-ConcreateIterater::ConcreateIterater(Aggregate* pAggregate)
-	: m_pConcreateAggregate(pAggregate)
+ConcreteIterater::ConcreteIterater(Aggregate* pAggregate)
+	: m_pConcreteAggregate(pAggregate)
 	, m_nIndex(0)
 {
 
 }
 
-void ConcreateIterater::First()
+void ConcreteIterater::First()
 {
 	m_nIndex = 0;
 }
 
-void ConcreateIterater::Next()
+void ConcreteIterater::Next()
 {
-	if (m_nIndex < m_pConcreateAggregate->GetSize())
+	if (m_nIndex < m_pConcreteAggregate->GetSize())
 	{
 		++m_nIndex;
 	}
 }
 
-bool ConcreateIterater::IsDone()
+bool ConcreteIterater::IsDone()
 {
-	return m_nIndex == m_pConcreateAggregate->GetSize();
+	return m_nIndex == m_pConcreteAggregate->GetSize();
 }
 
-DATA ConcreateIterater::CurrentItem()
+DATA ConcreteIterater::CurrentItem()
 {
-	return m_pConcreateAggregate->GetItem(m_nIndex);
+	return m_pConcreteAggregate->GetItem(m_nIndex);
 }
 
 
